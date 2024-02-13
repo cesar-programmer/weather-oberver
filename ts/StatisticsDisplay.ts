@@ -20,4 +20,7 @@ export class StatisticsDisplay implements Observer {
   }
   update(temperature: number, humidity: number, pressure: number) {
   }
+
+  updateForecast(message: string) {
+  }
 }

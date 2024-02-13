@@ -9,6 +9,7 @@ export class WeatherData implements Subject {
   private averageTemperature: number = 0;
   private maxTemperature: number = 0;
   private minTemperature: number = 0;
+  private forecast: string = '';
 
   subscribe(observer: Observer) {
     this.observers.set(observer.id, observer);
@@ -26,6 +27,10 @@ export class WeatherData implements Subject {
     this.observers.forEach(observer => observer.updateAverage(this.averageTemperature, this.maxTemperature, this.minTemperature));
   }
 
+  notifyForecast() {
+    this.observers.forEach(observer => observer.updateForecast(this.forecast));
+  }
+
   setMeasurements(temperature: number, humidity: number, pressure: number) {
     this.temperature = temperature;
     this.humidity = humidity;
@@ -38,5 +43,10 @@ export class WeatherData implements Subject {
     this.maxTemperature = maxTemperature;
     this.minTemperature = minTemperature;
     this.notifyAverage();
+  }
+
+  setForecast(forecast: string) {
+    this.forecast = forecast;
+    this.notifyForecast();
   }
 }

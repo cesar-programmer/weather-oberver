@@ -1,28 +1,39 @@
-<html>
-  <head>
-    <title>Observer</title>
-  </head>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Weather Observer</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main>
+    <header>
+      <h1>weather info</h1>
+    </header>
+    <section class="container">
+      <div class="weather-info">
+        <h2>actual conditions</h2>
+        <p>Temperature: <em id="temperature" class="temperature">0.00°C</em></p>
+        <p>Humidity: <em id="humidity" class="humidity">0.00%</em></p>
+        <p>Pressure: <em id="pressure" class="pressure">0.00hPa</em></p>
+      </div>
 
-  <body>
-    <h1>Weather</h1>
-    <h3>
-      <p><em id="temperature" class="temperature">0.00</em></p>
-      <p><em id="humidity" class="humidity">0.00</em></p>
-      <p><em id="pressure" class="pressure">0.00</em></p>
-    </h3>
+      <div class="weather-info">
+        <h2>Statistics</h2>
+        <p>average Temperature: <em id="averageTemperature" class="averageTemperature">0.00°C</em></p>
+        <p>Max Temperature: <em id="maxTemperature" class="maxTemperature">0.00°C</em></p>
+        <p>Min Temperature: <em id="minTemperature" class="minTemperature">0.00°C</em></p>
+      </div>
 
-    <h3>
-      <p><em id="averageTemperature" class="averageTemperature">0.00</em></p>
-      <p><em id="maxTemperature" class="maxTemperature">0.00</em></p>
-      <p><em id="minTemperature" class="minTemperature">0.00</em></p>
-    </h3>
+      <div class="weather-info">
+        <h2>Forecast</h2>
+        <p><em id="forecast" class="forecast">Loading...</em></p>
+      </div>
 
-    <input id="inputTemperature" class="inputTemperature"/>
-    <input id="inputThumidity" class="inputThumidity"/>
-    <input id="inputPressure" class="inputPressure"/>
+      <button id="addWeather" class="addWeather">Get Weather</button>
+    </section>
+  </main>
 
-    <button id="addWeather" class="addWeather">Add Weather</button>
-
-    <script type="module" src="./index.js"></script>
-  </body>
+  <script type="module" src="./index.js"></script>
+</body>
 </html>

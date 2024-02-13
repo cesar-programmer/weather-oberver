@@ -5,14 +5,22 @@ import { StatisticsDisplay } from './ts/StatisticsDisplay';
 
 class ForecastDisplay implements Observer {
   id: string;
+  private message: HTMLElement;
 
-  constructor(id: string) {
+  constructor(id: string, messageId: string) {
     this.id = id;
+    this.message = document.getElementById(messageId) as HTMLElement;
+  }
+
+  updateForecast(forecast: string) {
+    this.message.textContent = `Forecast: ${forecast}`;
   }
 
   update(temperature: number, humidity: number, pressure: number) {
-    console.log('ForecastDisplay', temperature, humidity, pressure);
   }
+  updateAverage(averageTemperature: number) {
+  }
+
 }
 
 const weatherData = new WeatherData();
@@ -23,25 +31,31 @@ weatherData.subscribe(display);
 const statisticsDisplay = new StatisticsDisplay('statisticsDisplay', 'averageTemperature', 'maxTemperature', 'minTemperature');
 weatherData.subscribe(statisticsDisplay);
 
+const forecastDisplay = new ForecastDisplay('forecastDisplay', 'forecast');
+weatherData.subscribe(forecastDisplay);
+
 function updateWeather() {
-  const temperatureInput = document.getElementById('inputTemperature') as HTMLInputElement;
-  const humidityInput = document.getElementById('inputThumidity') as HTMLInputElement;
-  const pressureInput = document.getElementById('inputPressure') as HTMLInputElement;
 
-  const averageTemperature = document.getElementById('averageTemperature') as HTMLElement;
-  const maxTemperature = document.getElementById('maxTemperature') as HTMLElement;
-  const minTemperature = document.getElementById('minTemperature') as HTMLElement;
+  const temperature = 68;
+  const humidity = 23;
+  const pressure = 12;
 
-  const temperature = parseFloat(temperatureInput.value);
-  const humidity = parseFloat(humidityInput.value);
-  const pressure = parseFloat(pressureInput.value);
+  const avrTemperature = 60;
+  const maTemperature = 70;
+  const miTemperature = 50;
 
-  const avrTemperature = 40;
-  const maTemperature = 40;
-  const miTemperature = 40;
+  let forecast = ' Is Sunny enjoy the day!';
+  if(temperature > 75) {
+    forecast = 'Hot';
+  }
+  if(temperature < 65) {
+    forecast = 'Cold';
+  }
+
 
   weatherData.setAverageTemperature(avrTemperature, maTemperature, miTemperature);
   weatherData.setMeasurements(temperature, humidity, pressure);
+  weatherData.setForecast(forecast);
 }
 
 const addWeatherButton = document.getElementById('addWeather');

@@ -1,0 +1,76 @@
+body {
+  background-color: #e0e0e0;
+  font-family: 'Roboto', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+main {
+  width: 320px;
+  height: 540px;
+  background-color: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+header h1 {
+  text-align: center;
+  margin-bottom: 5px;
+  margin-top: 0;
+}
+
+.weather-info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.weather-info h2 {
+  text-align: center;
+  margin: 10px 0;
+}
+
+p {
+  text-align: center;
+}
+
+button.addWeather {
+  font-size: 18px;
+  padding: 10px 20px;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 5px;
+  margin: 10px auto;
+  display: block;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+button.addWeather:hover {
+  background-color: #0056b3;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+button.addWeather:active {
+  background-color: #003875;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Restablece la sombra al hacer click */
+}
+
+
+.container {
+  background-color: #f4f4f4;
+  width: 100%;
+  height: 100%;
+}
+
+.weather-info, .weather-info h2, .weather-info p {
+  margin: 10px 0;
+  padding: 0;
+}

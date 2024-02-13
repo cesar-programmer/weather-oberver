@@ -20,4 +20,7 @@ export class CurrentConditionsDisplay implements Observer {
   }
   updateAverage(averageTemperature: number, maxTemperature: number, minTemperature: number) {
   }
+
+  updateForecast(message: string) {
+  }
 }
